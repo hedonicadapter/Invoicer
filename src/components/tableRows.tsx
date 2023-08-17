@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Week } from '../ts/interfaces';
+import styles from '../styles/form.module.css';
 
 export default function TableRows({
   removeRow,
@@ -89,9 +90,9 @@ export default function TableRows({
           </td>
           <td>
             {weeks.length > 1 && (
-              <button type='button' onClick={() => removeRow(index)}>
-                Ta bort
-              </button>
+              <div className={styles.removeRowContainer}>
+                <a onClick={() => removeRow(index)}>Ta bort</a>
+              </div>
             )}
           </td>
         </tr>

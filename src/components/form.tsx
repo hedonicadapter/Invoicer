@@ -209,9 +209,9 @@ export default function Form({ setFormData }: FormProps) {
                 setWeeks={setWeeks}
               />
             </table>
-            <button type='button' onClick={addRow}>
-              Lägg till rad
-            </button>
+            <div className={styles.addRowContainer}>
+              <a onClick={addRow}>Lägg till rad</a>
+            </div>
           </div>
 
           <div className={styles.formCard}>

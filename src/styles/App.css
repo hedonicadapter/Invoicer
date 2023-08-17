@@ -5,6 +5,7 @@
   --border: #4f4f4f;
   --border-light: #9a9a9a;
   --border-lightest: #7b7b7b;
+  --radius: 2px;
 }
 
 body {
