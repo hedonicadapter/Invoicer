@@ -1,0 +1,24 @@
+:root {
+  --bg: #0f0f0f;
+  --primary-white: #f1f1f1;
+}
+
+body {
+  padding-inline: 40px;
+  height: 100vh;
+
+  background-color: var(--bg);
+}
+
+.App {
+  padding-top: 2vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 100vh;
+
+  color: var(--primary-white);
+}
+.App > * {
+  flex: 1 1;
+}
