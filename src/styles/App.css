@@ -18,8 +18,6 @@ body {
 
 .App {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
   height: 100vh;
 
   color: var(--primary-white);

@@ -148,7 +148,7 @@ table {
 td input {
   margin-top: 4px;
 }
-tr td:last-child {
+tr td:last-child:not(:empty) {
   width: 70px;
 }
 thead {
