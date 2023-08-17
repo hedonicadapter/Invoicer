@@ -1,6 +1,9 @@
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 export const style = StyleSheet.create({
+  documentContainer: {
+    flex: 1,
+  },
   page: {
     flexDirection: 'column',
     backgroundColor: '#E4E4E4',
@@ -39,14 +42,19 @@ export const style = StyleSheet.create({
   },
   midAlign: {
     textAlign: 'center',
+    alignItems: 'center',
   },
   rightAlign: {
     textAlign: 'right',
+    alignItems: 'flex-end',
   },
   tableRow: {
-    fontSize: 16,
+    fontSize: 12,
   },
   tableFooter: {},
+  derivedDatas: {
+    paddingVertical: 3,
+  },
   bold: {
     fontWeight: 700,
   },

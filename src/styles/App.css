@@ -1,17 +1,21 @@
 :root {
-  --bg: #0f0f0f;
-  --primary-white: #f1f1f1;
+  --bg: #333333;
+  --surface: #3b3b3b;
+  --primary-white: white;
+  --border: #4f4f4f;
+  --border-light: #9a9a9a;
+  --border-lightest: #7b7b7b;
 }
 
 body {
-  padding-inline: 40px;
   height: 100vh;
+  overflow-y: hidden;
+  margin: 0;
 
   background-color: var(--bg);
 }
 
 .App {
-  padding-top: 2vh;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -20,5 +24,4 @@ body {
   color: var(--primary-white);
 }
 .App > * {
-  flex: 1 1;
 }

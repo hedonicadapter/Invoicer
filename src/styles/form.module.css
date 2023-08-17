@@ -1,20 +1,110 @@
-.formContainer {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1;
-  overflow-y: scroll;
-}
-.submitContainer {
-  padding-top: 40px;
+:root {
+  --left: 160px;
 }
 
-p {
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 90px;
+}
+.column {
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
+
+.formContainer {
+  text-align: right;
+  padding-bottom: 4vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  position: relative;
+}
+.formContainer > * {
+  padding-right: 20px;
+}
+
+.formBody {
+  position: relative;
+  padding-left: var(--left);
+}
+
+.formCard {
+  margin-block: 12px;
+  padding: 12px;
+  /* From https://css.glass */
+  background: var(--surface);
+  border-radius: 6px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* -webkit-backdrop-filter: blur(5px); */
+  border: 1px solid var(--border);
+}
+
+.submitContainer {
+  margin-block: 30px;
+}
+.submitContainer a {
+  padding: 14px;
+  margin-left: auto;
+  margin-block: 12px;
+
+  width: 50px;
+
+  color: var(--primary-white);
+  text-decoration: none;
+  text-align: center;
+
+  /* From https://css.glass */
+  background: var(--surface);
+  border-radius: 6px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  /* -webkit-backdrop-filter: blur(5px); */
+  border: 1px solid var(--border);
 }
 
 label {
-  text-transform: uppercase;
-  font-weight: 600;
+  user-select: none;
+  text-transform: lowercase;
+  font-weight: 300;
   font-size: 20px;
+  padding-block: 4px;
+}
+
+input {
+  /* cursor: text !important; */
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  text-align: right;
+
+  outline: 1px solid var(--border-lightest);
+  padding: 6px;
+  padding-inline: 8px;
+  border-radius: 1px;
+  background-color: var(--primary-white);
+}
+
+header {
+  background-color: var(--surface);
+  position: sticky;
+  top: 0;
+  border-bottom: 1px solid var(--border);
+  border-top: 2px solid var(--border-light);
+}
+h1 {
+  font-weight: 300;
+  font-size: 25px;
+  margin-top: 2px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+}
+
+table {
+  margin-right: 0px;
+  margin-left: auto;
 }

@@ -85,7 +85,7 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
       <View style={{ ...style.row, ...style.tableFooter }}>
         <Text> </Text>
         <Text> </Text>
-        <View style={style.column}>
+        <View style={{ ...style.column, ...style.rightAlign }}>
           <Text style={style.bold}>Summa</Text>
           <Text style={style.bold}>Moms</Text>
           <Text style={style.bold}>Total</Text>
@@ -98,16 +98,16 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
       </View>
       <View style={style.separator} />
       <View style={style.row}>
-        <View style={style.column}>
-          <Text>Momsregistreringsnummer: </Text>
-          <Text>Bankgiro: </Text>
-          <Text>Telefon: </Text>
-          <Text>Godkänd för F-skatt</Text>
+        <View style={{ ...style.column, ...style.rightAlign }}>
+          <Text style={style.derivedDatas}>Momsregistreringsnummer: </Text>
+          <Text style={style.derivedDatas}>Bankgiro: </Text>
+          <Text style={style.derivedDatas}>Telefon: </Text>
+          <Text style={style.derivedDatas}>Godkänd för F-skatt</Text>
         </View>
         <View style={style.column}>
-          <Text>{formData?.VATid || ' '}</Text>
-          <Text>{formData?.bankGiro || ' '}</Text>
-          <Text>{formData?.phone}</Text>
+          <Text style={style.derivedDatas}>{formData?.VATid || ' '}</Text>
+          <Text style={style.derivedDatas}>{formData?.bankGiro || ' '}</Text>
+          <Text style={style.derivedDatas}>{formData?.phone}</Text>
         </View>
       </View>
     </Page>
@@ -129,7 +129,7 @@ export default function DocumentContainer({
       .catch((err) => console.log(err));
   }, [formData, derived]);
   return (
-    <PDFViewer>
+    <PDFViewer style={style.documentContainer}>
       <Invoice formData={formData} derived={derived} />
     </PDFViewer>
   );
