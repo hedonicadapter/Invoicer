@@ -148,6 +148,9 @@ table {
 td input {
   margin-top: 4px;
 }
+tr td:last-child:empty {
+  display: none;
+}
 tr td:last-child:not(:empty) {
   width: 70px;
 }
