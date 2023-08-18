@@ -90,9 +90,12 @@ export default function TableRows({
           </td>
           <td>
             {weeks.length > 1 && (
-              <div className={styles.removeRowContainer}>
-                <a onClick={() => removeRow(index)}>Ta bort</a>
-              </div>
+              <a
+                className={styles.removeRowContainer}
+                onClick={() => removeRow(index)}
+              >
+                Ta bort
+              </a>
             )}
           </td>
         </tr>

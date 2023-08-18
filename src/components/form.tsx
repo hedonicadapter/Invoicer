@@ -209,9 +209,9 @@ export default function Form({ setFormData }: FormProps) {
                 setWeeks={setWeeks}
               />
             </table>
-            <div className={styles.addRowContainer}>
-              <a onClick={addRow}>Lägg till rad</a>
-            </div>
+            <a className={styles.addRowContainer} onClick={addRow}>
+              Lägg till rad
+            </a>
           </div>
 
           <div className={styles.formCard}>
@@ -246,11 +246,13 @@ export default function Form({ setFormData }: FormProps) {
               />
             </div>
           </div>
-          <div className={styles.submitContainer}>
-            <a id='download' download='Faktura.pdf'>
-              Spara
-            </a>
-          </div>
+          <a
+            className={styles.submitContainer}
+            id='download'
+            download='Faktura.pdf'
+          >
+            Spara
+          </a>
         </form>
       </div>
     </div>
