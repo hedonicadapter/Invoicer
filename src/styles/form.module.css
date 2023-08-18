@@ -53,6 +53,15 @@ a {
   color: var(--primary-white);
   text-decoration: none;
   text-align: center;
+
+  transition: border-color 0.12s ease-out;
+}
+a:hover {
+  border-color: var(--border-lightest);
+  box-shadow: var(--shadow);
+}
+a:active {
+  opacity: 0.5;
 }
 
 .submitContainer,
@@ -85,7 +94,6 @@ a {
   padding-bottom: 7px;
 }
 .removeRowContainer {
-  margin-bottom: -3px;
   padding: 8px;
   padding-top: 3px;
   padding-bottom: 5px;
@@ -171,18 +179,41 @@ table {
   /* width: 100%; */
 }
 td input {
-  margin-top: 4px;
   box-sizing: border-box;
   width: 100%;
 
   text-align: center;
+  border-radius: 0;
 }
+
+/* round table */
+/* top left */
+tr:first-child td:first-child input {
+  border-top-left-radius: var(--radius);
+}
+/* bottom right */
+tr:last-child td:nth-last-child(2) input {
+  border-bottom-right-radius: var(--radius);
+}
+/* top right */
+tr:nth-last-child(2) td:nth-last-child(2) input {
+  border-top-right-radius: var(--radius);
+}
+/* bottom left */
+tr:last-child td:first-child input {
+  border-bottom-left-radius: var(--radius);
+}
+
 tr td:last-child:empty {
   display: none;
 }
+
 tr td:last-child:not(:empty) {
-  padding-left: 6px;
+  padding-left: 4px;
 }
 thead {
   text-align: center;
+}
+th {
+  padding-bottom: 5px;
 }
