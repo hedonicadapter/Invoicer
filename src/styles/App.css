@@ -8,6 +8,8 @@
   --border-lightest: #7b7b7b;
   --radius: 3px;
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  --error: #874356;
 }
 
 body {

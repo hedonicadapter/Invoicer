@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import styles from '../styles/form.module.css';
 import { createWeek, FormProps, Week } from '../ts/interfaces';
 import TableRows from './tableRows';
@@ -192,7 +193,11 @@ export default function Form({ setFormData }: FormProps) {
             </div>
           </div>
 
-          <div className={styles.formCard}>
+          <motion.div
+            layout
+            transition={{ duration: 0.15, type: 'linear' }}
+            className={styles.formCard}
+          >
             <table>
               <thead>
                 <tr>
@@ -212,7 +217,7 @@ export default function Form({ setFormData }: FormProps) {
             <a className={styles.addRowContainer} onClick={addRow}>
               Lägg till rad
             </a>
-          </div>
+          </motion.div>
 
           <div className={styles.formCard}>
             <div className={styles.column}>
