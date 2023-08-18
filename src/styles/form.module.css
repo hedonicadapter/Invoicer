@@ -34,7 +34,7 @@
 
 .formCard {
   margin-block: 12px;
-  padding: 12px;
+  padding: 16px;
   /* From https://css.glass */
   background: var(--surface);
   border-radius: var(--radius);
@@ -50,13 +50,14 @@
 a {
   display: inline-block;
   user-select: none;
-  color: var(--primary-white);
+  color: var(--secondary-white);
   text-decoration: none;
   text-align: center;
 
   transition: border-color 0.12s ease-out;
 }
 a:hover {
+  color: var(--primary-white);
   border-color: var(--border-lightest);
   box-shadow: var(--shadow);
 }
@@ -94,9 +95,13 @@ a:active {
   padding-bottom: 7px;
 }
 .removeRowContainer {
-  padding: 8px;
-  padding-top: 3px;
-  padding-bottom: 5px;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 12px;
+  padding-top: 9px;
+  padding-bottom: 10px;
 }
 
 .submitContainer {
@@ -192,13 +197,13 @@ tr:first-child td:first-child input {
   border-top-left-radius: var(--radius);
 }
 /* bottom right */
-tr:last-child td:nth-last-child(2) input {
+/* tr:last-child td:nth-last-child(2) input {
   border-bottom-right-radius: var(--radius);
-}
+} */
 /* top right */
-tr:nth-last-child(2) td:nth-last-child(2) input {
+/* tr:nth-last-child(2) td:nth-last-child(2) input {
   border-top-right-radius: var(--radius);
-}
+} */
 /* bottom left */
 tr:last-child td:first-child input {
   border-bottom-left-radius: var(--radius);
@@ -209,7 +214,6 @@ tr td:last-child:empty {
 }
 
 tr td:last-child:not(:empty) {
-  padding-left: 4px;
 }
 thead {
   text-align: center;
