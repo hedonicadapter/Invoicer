@@ -68,7 +68,7 @@ export default function TableRows({
           </td>
           <td>
             <input
-              type='text'
+              type='number'
               id='weekAmount'
               name='weekAmount'
               value={week?.amount?.hours}

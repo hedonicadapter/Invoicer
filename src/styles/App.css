@@ -2,17 +2,19 @@
   --bg: #333333;
   --surface: #3b3b3b;
   --primary-white: white;
+  --secondary-white: rgba(255, 255, 255, 0.86);
   --border: #4f4f4f;
   --border-light: #9a9a9a;
   --border-lightest: #7b7b7b;
-  --radius: 2px;
+  --radius: 3px;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 body {
   height: 100vh;
   overflow-y: hidden;
   margin: 0;
-
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg);
 }
 
