@@ -43,3 +43,11 @@ export interface DocumentContainerProps {
   formData?: FormData;
   derived?: DerivedData;
 }
+
+export type EmailData = {
+  from: string | undefined;
+  to?: string;
+  recipient: string | undefined;
+  message?: string;
+  // bcc: boolean;
+};

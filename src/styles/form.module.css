@@ -5,7 +5,6 @@
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
   gap: 12px;
 }
 .column {
@@ -45,7 +44,8 @@
   box-shadow: 2px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-a {
+a,
+button {
   display: inline-block;
   user-select: none;
   color: var(--secondary-white);
@@ -54,16 +54,18 @@ a {
 
   transition: border-color 0.12s ease-out;
 }
-a:hover {
+a:hover,
+button:hover {
   color: var(--primary-white);
   border-color: var(--border-lightest);
   box-shadow: var(--shadow);
 }
-a:active {
+a:active,
+button:active {
   opacity: 0.5;
 }
 
-.submitContainer,
+.outsideButton,
 .addRowContainer,
 .removeRowContainer {
   white-space: nowrap;
@@ -74,7 +76,7 @@ a:active {
   width: max-content;
 }
 
-.submitContainer {
+.outsideButton {
   padding: 14px;
   padding-top: 10px;
   padding-bottom: 12px;
@@ -102,15 +104,22 @@ a:active {
   padding-bottom: 10px;
   transition: background-color 0.12s ease-out;
 }
-.removeRowContainer:hover {
+.danger:hover {
   background-color: var(--error);
 }
 
-.submitContainer {
+.buttonGroup {
+  display: inline-block;
+}
+.buttonGroup > * {
+  margin-left: 12px;
+}
+
+.outsideButton {
   border: 1px solid var(--border);
   margin-bottom: 12px;
 
-  width: 50px;
+  /* width: max-content; */
 
   color: var(--primary-white);
   text-decoration: none;
@@ -125,7 +134,6 @@ a:active {
 
 label {
   user-select: none;
-  text-transform: lowercase;
   font-weight: 300;
   /* font-size: 16px; */
   padding-top: 14px;
@@ -222,4 +230,19 @@ thead {
 }
 th {
   padding-bottom: 5px;
+}
+
+.dialog {
+  margin: auto;
+  background-color: var(--bg);
+}
+.dialog button {
+  margin-top: 2vh;
+}
+dialog::backdrop {
+  filter: brightness(80%);
+  backdrop-filter: blur(2px);
+}
+dialog input {
+  text-align: left;
 }

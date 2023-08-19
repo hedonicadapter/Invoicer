@@ -107,7 +107,9 @@ export default function TableRows({
                     animate={{ width: 'auto', opacity: 1, scaleX: 1 }}
                     exit={{ width: 0, opacity: 0, scaleX: 0 }}
                     transition={{ duration: 0.15, type: 'tween' }}
-                    className={styles.removeRowContainer}
+                    className={[styles.danger, styles.removeRowContainer].join(
+                      ' '
+                    )}
                     onClick={() => removeRow(index)}
                   >
                     Ta bort

@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+import { createRef, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import styles from '../styles/form.module.css';
 import { createWeek, FormProps, Week } from '../ts/interfaces';
 import TableRows from './tableRows';
+import EmailDialog from './emailDialog';
 
 export default function Form({ setFormData }: FormProps) {
+  const [emailDialog, toggleEmailDialog] = useState<boolean | null>(null);
+
   const [from, setFrom] = useState<string | undefined>('Zahra Herman DL');
   const [to, setTo] = useState<string | undefined>('');
   const [invoiceNumber, setInvoiceNumber] = useState<string | undefined>();
@@ -40,6 +43,7 @@ export default function Form({ setFormData }: FormProps) {
 
     setWeeks([...copy]);
   };
+  const openEmailDialog = () => toggleEmailDialog(!emailDialog);
 
   useEffect(() => {
     setFormData({
@@ -251,14 +255,28 @@ export default function Form({ setFormData }: FormProps) {
               />
             </div>
           </div>
-          <a
-            className={styles.submitContainer}
-            id='download'
-            download='Faktura.pdf'
-          >
-            Spara
-          </a>
+          <div className={[styles.row, styles.buttonGroup].join(' ')}>
+            <a
+              className={[styles.emailContainer, styles.outsideButton].join(
+                ' '
+              )}
+              id='email'
+              onClick={openEmailDialog}
+            >
+              Maila
+            </a>
+            <a
+              className={[styles.outsideButton, styles.submitContainer].join(
+                ' '
+              )}
+              id='download'
+              download='Faktura.pdf'
+            >
+              Spara
+            </a>
+          </div>
         </form>
+        <EmailDialog toggle={emailDialog} from={from} />
       </div>
     </div>
   );
