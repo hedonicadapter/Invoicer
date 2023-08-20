@@ -141,7 +141,9 @@ label {
   color: var(--secondary-white);
 }
 
-input {
+input,
+textarea,
+.fakeInput {
   /* cursor: text !important; */
   border: none;
   background-image: none;
@@ -151,8 +153,12 @@ input {
   box-shadow: none;
   text-align: right;
 
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
   padding: 7px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 100;
   padding-inline: 8px;
   border-radius: var(--radius);
@@ -164,10 +170,14 @@ input {
 
   transition: all 0.12s ease-out;
 }
-input:hover {
+input:hover,
+textarea:hover,
+.fakeInput:hover {
   border-bottom-color: var(--border-lightest);
 }
-input:focus {
+input:focus,
+textarea:focus,
+.fakeInput:focus {
   border-bottom-color: var(--border-light);
 }
 
@@ -234,7 +244,6 @@ th {
 
 .dialog {
   margin: auto;
-  background-color: var(--bg);
 }
 .dialog button {
   margin-top: 2vh;
@@ -245,4 +254,53 @@ dialog::backdrop {
 }
 dialog input {
   text-align: left;
+}
+
+.emailBody {
+  gap: 4px;
+}
+
+dialog textarea {
+  min-height: 15vh;
+  max-height: 350px;
+  width: 100%;
+  resize: none;
+  text-align: left;
+  /* width: calc(100% - 8px); */
+  box-sizing: border-box;
+}
+
+.emailFirstLine {
+  margin-top: 10px;
+  align-items: baseline;
+  margin-left: 5px;
+  gap: 6px;
+}
+.emailFirstLine * {
+  font-size: 18px;
+}
+
+#firstLineComma {
+  margin-left: -4px !important;
+}
+
+.fakeInput {
+  cursor: text;
+  background-color: var(--surface);
+  color: var(--primary-white);
+  padding: 0;
+  border-radius: 0;
+}
+
+[placeholder] {
+  font-family: inherit;
+}
+
+[placeholder]:empty::before {
+  content: attr(placeholder);
+  color: #555;
+}
+
+[placeholder]:empty:focus::before {
+  content: '';
 }

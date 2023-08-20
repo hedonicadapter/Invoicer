@@ -9,6 +9,7 @@
   --radius: 3px;
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
+  --success: #7eaa92;
   --error: #874356;
 }
 
@@ -27,4 +28,40 @@ body {
   color: var(--primary-white);
 }
 .App > * {
+}
+
+/* moved here from form for more customization */
+.bccCheckbox * {
+  outline-color: transparent;
+}
+.react-switch-bg {
+  transition: border-color 0.12s ease-out;
+  border-bottom: 1px solid var(--border);
+  width: 35px;
+}
+label[for='bcc'] {
+  margin-top: -6px;
+  cursor: pointer;
+  transition: opacity 0.12s ease-out;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  color: var(--border-lightest);
+}
+.bccCheckboxChecked ~ span {
+  color: var(--primary-white) !important;
+}
+.bccCheckbox {
+  border-radius: var(--radius) !important;
+}
+label[for='bcc']:active span {
+  opacity: 0.5;
+}
+.bccCheckbox:hover,
+label[for='bcc']:hover .react-switch-bg {
+  border-bottom: 1px solid var(--border-lightest);
+}
+.bccCheckbox:active {
+  border-bottom: 1px solid var(--border-light);
 }
