@@ -114,6 +114,27 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
   </Document>
 );
 
+function blobToBase64(blob: Blob) {
+  return new Promise((resolve, _) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.readAsDataURL(blob);
+  });
+}
+
+export const getFile = async () => {
+  const url = document.getElementById('download')?.getAttribute('href');
+  if (!url) return false;
+  try {
+    const response = await fetch(url);
+    const blob = await response.blob();
+
+    return await blobToBase64(blob);
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+};
+
 export default function DocumentContainer({
   formData,
   derived,

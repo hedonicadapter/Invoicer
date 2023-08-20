@@ -6,7 +6,7 @@ import TableRows from './tableRows';
 import EmailDialog from './emailDialog';
 
 export default function Form({ setFormData }: FormProps) {
-  const [emailDialog, toggleEmailDialog] = useState<boolean | null>(null);
+  const [openEmailDialog, setOpenEmailDialog] = useState<boolean | null>(false);
 
   const [from, setFrom] = useState<string | undefined>('Zahra Herman DL');
   const [to, setTo] = useState<string | undefined>('');
@@ -43,7 +43,6 @@ export default function Form({ setFormData }: FormProps) {
 
     setWeeks([...copy]);
   };
-  const openEmailDialog = () => toggleEmailDialog(!emailDialog);
 
   useEffect(() => {
     setFormData({
@@ -261,7 +260,7 @@ export default function Form({ setFormData }: FormProps) {
                 ' '
               )}
               id='email'
-              onClick={openEmailDialog}
+              onClick={() => setOpenEmailDialog(true)}
             >
               Maila
             </a>
@@ -276,7 +275,11 @@ export default function Form({ setFormData }: FormProps) {
             </a>
           </div>
         </form>
-        <EmailDialog toggle={emailDialog} from={from} />
+        {/* <EmailDialog
+          open={openEmailDialog}
+          setOpen={setOpenEmailDialog}
+          from={from}
+        /> */}
       </div>
     </div>
   );

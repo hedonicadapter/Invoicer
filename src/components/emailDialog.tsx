@@ -4,6 +4,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 import Switch from 'react-switch';
 import { EmailData } from '../ts/interfaces';
 import styles from '../styles/form.module.css';
+import { getFile } from './documents';
 
 const sendEmail = (emailData: EmailData) => {
   emailjs
@@ -19,26 +20,31 @@ const sendEmail = (emailData: EmailData) => {
 };
 
 const EmailDialog = ({
-  toggle,
+  open,
+  setOpen,
   from,
 }: {
-  toggle: boolean | null;
+  open: boolean | null;
+  setOpen: (open: boolean) => void;
   from: string | undefined;
 }) => {
   const ref = useRef<HTMLDialogElement | null>(null);
-  const [recipient, setRecipient] = useState('');
-  const [name, setName] = useState('');
+  const [recipient, setRecipient] = useState<string>('');
+  const [name, setName] = useState<string | undefined>('');
   const [emailBody, setEmailBody] = useState('');
   const [bcc, setBcc] = useState(true);
 
   const openEmailDialog = () => ref.current?.showModal();
 
-  const handleSend = () => {
+  const handleSend = async ({ from, recipient, message, to }: EmailData) => {
+    const file = await getFile();
+
     const emailData = {
       from,
       recipient,
-      message: emailBody,
-      to: name,
+      message,
+      to,
+      content: file,
       //   bcc,
     };
 
@@ -46,11 +52,15 @@ const EmailDialog = ({
   };
 
   useEffect(() => {
-    openEmailDialog();
-  }, [toggle]);
+    if (open) openEmailDialog();
+  }, [open]);
 
   return (
-    <dialog className={[styles.formCard, styles.dialog].join(' ')} ref={ref}>
+    <dialog
+      onClose={() => setOpen(false)}
+      className={[styles.formCard, styles.dialog].join(' ')}
+      ref={ref}
+    >
       <form method='dialog'>
         <div className={[styles.column, styles.emailBody].join(' ')}>
           <div className={styles.row}>
@@ -70,9 +80,10 @@ const EmailDialog = ({
             <span
               className={styles.fakeInput}
               contentEditable={true}
+              suppressContentEditableWarning={true}
               placeholder='Sam'
-              onChange={({ currentTarget }) =>
-                setName(currentTarget?.innerText)
+              onBlur={({ currentTarget }) =>
+                setName(currentTarget?.textContent || '')
               }
             >
               {name}
@@ -126,7 +137,9 @@ const EmailDialog = ({
           <button
             className={styles.outsideButton}
             type='submit'
-            onClick={handleSend}
+            onClick={() =>
+              handleSend({ from, recipient, message: emailBody, to: name })
+            }
           >
             Skicka
           </button>
