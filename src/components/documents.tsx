@@ -29,7 +29,10 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
   <Document title='ValAB-faktura' author='Sam Herman'>
     <Page size='A4' style={style.page}>
       <View style={style.header}>
-        <Text>Val AB Faktura</Text>
+        <View style={style.row}>
+          <Text>Val AB</Text>
+          <Text style={style.subHeader}>:faktura</Text>
+        </View>
         <Text style={style.orgNumber}>Org nr: 559203-0976</Text>
       </View>
       <View style={style.row}>
@@ -58,38 +61,38 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
       <View style={style.row}>
         <Text>Förfallodatum: {formData?.dueDate}</Text>
       </View>
+      <View style={style.table}>
+        <View style={{ ...style.row, ...style.tableHeader }}>
+          <Text>Vecka</Text>
+          <Text>Tjänsteställe</Text>
+          <Text>Antal</Text>
+          <Text>À-pris</Text>
+          <Text style={style.rightAlign}>Summa</Text>
+        </View>
 
-      <View style={style.separator}></View>
-      <View style={style.row}>
-        <Text>Vecka</Text>
-        <Text>Tjänsteställe</Text>
-        <Text>Antal</Text>
-        <Text>À-pris</Text>
-        <Text style={style.rightAlign}>Summa</Text>
-      </View>
-
-      {formData?.weeks?.map((week) => (
-        <View style={{ ...style.row, ...style.tableRow }}>
-          <Text>{week?.number}</Text>
-          <View style={style.column}>
-            <Text>{week?.location}</Text>
-            <Text style={style.conductedByText}>
-              {week?.conductedBy ? 'Arbetet utfört av\nZahra Herman' : ''}
+        {formData?.weeks?.map((week) => (
+          <View style={{ ...style.row, ...style.tableRow }}>
+            <Text>{week?.number}</Text>
+            <View style={style.column}>
+              <Text>{week?.location}</Text>
+              <Text style={style.conductedByText}>
+                {week?.conductedBy ? 'Arbetet utfört av\nZahra Herman' : ''}
+              </Text>
+            </View>
+            <Text style={style.rightAlign}>
+              {week?.amount.hours ? week.amount.hours + 'h' : ''}
+            </Text>
+            <Text style={style.rightAlign}>
+              {week?.unitPrice != null ? week.unitPrice : ''}
+            </Text>
+            <Text style={style.rightAlign}>
+              {week?.amount?.hours != null && week?.unitPrice != null
+                ? week.amount.hours * week.unitPrice
+                : ''}
             </Text>
           </View>
-          <Text style={style.rightAlign}>
-            {week?.amount.hours ? week.amount.hours + 'h' : ''}
-          </Text>
-          <Text style={style.rightAlign}>
-            {week?.unitPrice != null ? week.unitPrice : ''}
-          </Text>
-          <Text style={style.rightAlign}>
-            {week?.amount?.hours != null && week?.unitPrice != null
-              ? week.amount.hours * week.unitPrice
-              : ''}
-          </Text>
-        </View>
-      ))}
+        ))}
+      </View>
       <View style={style.separator}></View>
       <View style={{ ...style.row, ...style.tableFooter }}>
         <Text> </Text>
@@ -105,18 +108,33 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
           <Text style={style.rightAlign}>{derived?.total || 0}kr</Text>
         </View>
       </View>
-      <View style={style.separator} />
-      <View style={style.row}>
+
+      <View style={{ ...style.row, ...style.footer }}>
         <View style={{ ...style.column, ...style.rightAlign }}>
-          <Text style={style.derivedDatas}>Momsregistreringsnummer: </Text>
-          <Text style={style.derivedDatas}>Bankgiro: </Text>
-          <Text style={style.derivedDatas}>Telefon: </Text>
-          <Text style={style.derivedDatas}>Godkänd för F-skatt</Text>
-        </View>
-        <View style={style.column}>
-          <Text style={style.derivedDatas}>{formData?.VATid || ' '}</Text>
-          <Text style={style.derivedDatas}>{formData?.bankGiro || ' '}</Text>
-          <Text style={style.derivedDatas}>{formData?.phone}</Text>
+          <View style={style.row}>
+            <View
+              style={{
+                ...style.column,
+                ...style.rightAlign,
+                ...style.VATAndWhatnot,
+              }}
+            >
+              <Text>Momsregistreringsnummer:</Text>
+              <Text>Bankgiro: </Text>
+              <Text>Telefon: </Text>
+              <Text>Godkänd för F-skatt</Text>
+            </View>
+            <View
+              style={{
+                ...style.column,
+                ...style.misc,
+              }}
+            >
+              <Text>{formData?.VATid || ' '}</Text>
+              <Text>{formData?.bankGiro || ' afaef'}</Text>
+              <Text>{formData?.phone}</Text>
+            </View>
+          </View>
         </View>
       </View>
     </Page>

@@ -1,8 +1,27 @@
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import {
+  Page,
+  Text,
+  View,
+  Document,
+  StyleSheet,
+  Font,
+} from '@react-pdf/renderer';
+import SFPro from '../assets/SF-Pro.ttf';
+import SFDisplayThin from '../assets/SFProText-Bold.ttf';
+
+Font.register({
+  family: 'SF Pro',
+  src: SFPro,
+});
+Font.register({
+  family: 'SF Display',
+  src: SFDisplayThin,
+});
 
 export const style = StyleSheet.create({
   documentContainer: {
     flex: 1,
+    fontFamily: 'SF Pro',
   },
   page: {
     flexDirection: 'column',
@@ -12,10 +31,17 @@ export const style = StyleSheet.create({
     fontSize: 12,
   },
   header: {
-    fontSize: 30,
-    paddingBottom: 20,
+    // fontFamily: 'SF Display',
+    fontSize: 62,
+    fontWeight: 100,
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  subHeader: {
+    marginBottom: 0,
+    marginTop: 'auto',
+    fontSize: 18,
+    paddingBottom: 10,
   },
   orgNumber: {
     fontSize: 16,
@@ -33,7 +59,7 @@ export const style = StyleSheet.create({
     backgroundColor: '#0f0f0f',
   },
   firstColumn: { width: 200 },
-  secondColumn: { width: 160 },
+  secondColumn: { width: 148 },
   column: {
     flexDirection: 'column',
     overflowWrap: 'break-word',
@@ -53,13 +79,24 @@ export const style = StyleSheet.create({
     textAlign: 'right',
     alignItems: 'flex-end',
   },
+  table: {
+    margin: 'auto 0',
+    marginHorizontal: '-40',
+    backgroundColor: 'black',
+    color: 'white',
+  },
+  tableHeader: {
+    backgroundColor: '#00509d',
+    color: 'white',
+    paddingHorizontal: 48,
+    borderRadius: 1,
+  },
   tableRow: {
+    paddingHorizontal: 48,
     fontSize: 12,
   },
   tableFooter: {},
-  derivedDatas: {
-    paddingVertical: 3,
-  },
+
   bold: {
     fontWeight: 700,
   },
@@ -67,4 +104,18 @@ export const style = StyleSheet.create({
     fontSize: 8,
     textAlign: 'justify',
   },
+  footer: {
+    marginLeft: 'auto',
+    marginRight: 0,
+    marginTop: 'auto',
+    marginBottom: 0,
+  },
+  VATAndWhatnot: {
+    width: 180,
+    justifyContent: 'flex-end',
+    paddingRight: 5,
+    gap: 10,
+  },
+
+  misc: { gap: 10 },
 });
