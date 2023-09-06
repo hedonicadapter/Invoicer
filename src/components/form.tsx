@@ -11,7 +11,7 @@ export default function Form({ setFormData }: FormProps) {
   const [from, setFrom] = useState<string | undefined>('Zahra Herman DL');
   const [to, setTo] = useState<string | undefined>('');
   const [invoiceNumber, setInvoiceNumber] = useState<string | undefined>();
-  const [ourRef, setOurRef] = useState<string | undefined>();
+  const [ourRef, setOurRef] = useState<string | undefined>('559203-0976');
   const [yourRef, setYourRef] = useState<string | undefined>();
   const [company, setCompany] = useState<string | undefined>('Val AB');
   const [address, setAddress] = useState<string | undefined>(
@@ -20,7 +20,7 @@ export default function Form({ setFormData }: FormProps) {
   const [zipCode, setZipCode] = useState<string | undefined>('431 44');
   const [phone, setPhone] = useState<string | undefined>('(+46)76 305 48 65');
   const [VATid, setVATid] = useState<string | undefined>('SE559203097601');
-  const [bankGiro, setBankGiro] = useState<string | undefined>();
+  const [bankGiro, setBankGiro] = useState<string | undefined>('');
   const [date, setDate] = useState<
     string | number | readonly string[] | undefined
   >();
@@ -204,6 +204,7 @@ export default function Form({ setFormData }: FormProps) {
             <table>
               <thead>
                 <tr>
+                  <th>Utfört av ZH</th>
                   <th>Vecka</th>
                   <th>Tjänsteställe</th>
                   <th>Antal</th>

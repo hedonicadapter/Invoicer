@@ -1,7 +1,58 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import { Week } from '../ts/interfaces';
 import styles from '../styles/form.module.css';
 import { AnimatePresence, motion } from 'framer-motion';
+import Switch from 'react-switch';
+
+function ConductedByCheck({
+  value,
+  handleChange,
+  i,
+}: {
+  value: boolean | undefined;
+  handleChange: (
+    cellIndex: number,
+    cellType: keyof Week,
+    value: string | number | boolean | undefined
+  ) => void;
+  i: number;
+}) {
+  const [val, setVal] = useState(true);
+
+  useEffect(() => {
+    setVal(value || true);
+  }, [value]);
+
+  return (
+    <label
+      className={styles.conductedByCheckBoxLabel}
+      htmlFor='conductedBy'
+      onClick={() => setVal(!val)}
+    >
+      <Switch
+        onColor='#617A55'
+        height={8}
+        width={48}
+        handleDiameter={12}
+        offColor='#333333'
+        offHandleColor='#7b7b7b'
+        checkedIcon={false}
+        uncheckedIcon={false}
+        className={[
+          styles.conductedByCheckbox,
+          value && 'conductedByCheckboxChecked',
+        ].join(' ')}
+        borderRadius={0}
+        name='conductedBy'
+        type='checkbox'
+        checked={val}
+        onChange={() => {
+          handleChange(i, 'conductedBy', !val);
+        }}
+      />
+    </label>
+  );
+}
 
 export default function TableRows({
   removeRow,
@@ -15,7 +66,7 @@ export default function TableRows({
   const handleCellOnChange = (
     cellIndex: number,
     cellType: keyof Week,
-    value: string | number | undefined
+    value: string | number | boolean | undefined
   ) => {
     if (value === undefined) return;
 
@@ -53,6 +104,13 @@ export default function TableRows({
             exit={{ height: 0, opacity: 0, scaleY: 0 }}
             transition={{ duration: 0.15, type: 'tween' }}
           >
+            <td>
+              <ConductedByCheck
+                value={week?.conductedBy}
+                handleChange={handleCellOnChange}
+                i={index}
+              />
+            </td>
             <td>
               <input
                 type='text'

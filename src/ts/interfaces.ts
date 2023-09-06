@@ -5,6 +5,7 @@ export type Week = {
   location: string | undefined;
   amount: { hours: number | undefined; minutes: number | undefined };
   unitPrice: number | undefined;
+  conductedBy: boolean;
 };
 
 export const createWeek = (weekProps?: Week) => {
@@ -13,6 +14,7 @@ export const createWeek = (weekProps?: Week) => {
     location: weekProps?.location || undefined,
     amount: weekProps?.amount || { hours: undefined, minutes: undefined },
     unitPrice: weekProps?.unitPrice || undefined,
+    conductedBy: weekProps?.conductedBy || false,
   };
 };
 

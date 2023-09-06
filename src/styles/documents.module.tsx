@@ -32,8 +32,13 @@ export const style = StyleSheet.create({
     height: 1,
     backgroundColor: '#0f0f0f',
   },
+  firstColumn: { width: 200 },
+  secondColumn: { width: 160 },
   column: {
     flexDirection: 'column',
+    overflowWrap: 'break-word',
+    wordWrap: 'break-word',
+    wordBreak: 'break-word',
   },
   row: {
     flexDirection: 'row',
@@ -57,5 +62,9 @@ export const style = StyleSheet.create({
   },
   bold: {
     fontWeight: 700,
+  },
+  conductedByText: {
+    fontSize: 8,
+    textAlign: 'justify',
   },
 });

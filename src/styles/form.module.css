@@ -100,8 +100,8 @@ button:active {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   padding: 12px;
-  padding-top: 9px;
-  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 11px;
   transition: background-color 0.12s ease-out;
 }
 .danger:hover {
@@ -198,6 +198,10 @@ h1 {
   height: 33px;
 }
 
+.conductedByCheckBoxLabel {
+  pointer-events: pointer;
+}
+
 table {
   margin-left: auto;
   table-layout: fixed;
@@ -229,6 +233,59 @@ tr:last-child td:first-child input {
   border-bottom-left-radius: var(--radius);
 }
 
+/* Utfört av ZH */
+tr td:first-child {
+}
+.conductedByCheckbox {
+  /* height: 100%; */
+  margin-bottom: -4px;
+  border-bottom: 1px solid var(--border);
+  margin-right: 2px;
+}
+.conductedByCheckbox div {
+  padding-block: -6px;
+
+  border-radius: var(--radius) !important;
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+.react-switch-bg.conductedByCheckbox {
+  transition: border-color 0.12s ease-out;
+  border-bottom: 1px solid var(--border);
+}
+
+.conductedByCheckbox * {
+  outline-color: transparent;
+  border-radius: var(--radius);
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+label[for='conductedBy'] {
+  cursor: pointer;
+  margin: auto;
+  transition: opacity 0.12s ease-out;
+  color: var(--border-light);
+  transition: color 0.12s ease-out;
+}
+.conductedByCheckboxChecked ~ span {
+  color: var(--primary-white) !important;
+}
+.conductedByCheckbox {
+  border-radius: var(--radius) !important;
+}
+label[for='conductedBy']:active span {
+  opacity: 0.5;
+}
+label[for='conductedBy']:hover {
+  color: var(--primary-white);
+}
+.conductedByCheckbox:hover,
+label[for='conductedBy']:hover .react-switch-bg {
+}
+
+.conductedByCheckbox:active {
+}
+
 tr td:last-child:empty {
   display: none;
 }
@@ -239,6 +296,7 @@ thead {
   text-align: center;
 }
 th {
+  white-space: nowrap;
   padding-bottom: 5px;
 }
 

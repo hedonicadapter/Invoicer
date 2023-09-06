@@ -21,6 +21,10 @@ const renderUrl = async (document: JSX.Element) =>
     .then((res) => res)
     .catch((err) => console.log(err));
 
+function breakName(name: string): string[] {
+  return [name];
+}
+
 const Invoice = ({ formData, derived }: DocumentContainerProps) => (
   <Document title='ValAB-faktura' author='Sam Herman'>
     <Page size='A4' style={style.page}>
@@ -29,11 +33,11 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
         <Text style={style.orgNumber}>Org nr: 559203-0976</Text>
       </View>
       <View style={style.row}>
-        <View style={style.column}>
+        <View style={{ ...style.column, ...style.firstColumn }}>
           <Text>Från: {formData?.from}</Text>
           <Text>Till: {formData?.to}</Text>
         </View>
-        <View style={style.column}>
+        <View style={{ ...style.column, ...style.secondColumn }}>
           <Text>Datum: {formData?.date}</Text>
           <Text>Fakturanr: {formData?.invoiceNumber}</Text>
         </View>
@@ -67,7 +71,12 @@ const Invoice = ({ formData, derived }: DocumentContainerProps) => (
       {formData?.weeks?.map((week) => (
         <View style={{ ...style.row, ...style.tableRow }}>
           <Text>{week?.number}</Text>
-          <Text style={style.rightAlign}>{week?.location}</Text>
+          <View style={style.column}>
+            <Text>{week?.location}</Text>
+            <Text style={style.conductedByText}>
+              {week?.conductedBy ? 'Arbetet utfört av\nZahra Herman' : ''}
+            </Text>
+          </View>
           <Text style={style.rightAlign}>
             {week?.amount.hours ? week.amount.hours + 'h' : ''}
           </Text>
