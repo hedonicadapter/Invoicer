@@ -14,7 +14,7 @@ export const createWeek = (weekProps?: Week) => {
     location: weekProps?.location || undefined,
     amount: weekProps?.amount || { hours: undefined, minutes: undefined },
     unitPrice: weekProps?.unitPrice || undefined,
-    conductedBy: weekProps?.conductedBy || false,
+    conductedBy: weekProps?.conductedBy || true,
   };
 };
 
