@@ -20,10 +20,10 @@ export default function Form({ setFormData }: FormProps) {
   const [zipCode, setZipCode] = useState<string | undefined>('431 44');
   const [phone, setPhone] = useState<string | undefined>('(+46)76 305 48 65');
   const [VATid, setVATid] = useState<string | undefined>('SE559203097601');
-  const [bankGiro, setBankGiro] = useState<string | undefined>('');
+  const [bankGiro, setBankGiro] = useState<string | undefined>('5350-9006');
   const [date, setDate] = useState<
     string | number | readonly string[] | undefined
-  >();
+  >(new Date().toLocaleDateString('sv-se'));
   const [dueDate, setDueDate] = useState<
     string | number | readonly string[] | undefined
   >();
@@ -97,6 +97,22 @@ export default function Form({ setFormData }: FormProps) {
                     value={from}
                     onChange={({ target }) => setFrom(target.value)}
                   />
+                  <label htmlFor='address'>Adress</label>
+                  <input
+                    type='text'
+                    id='address'
+                    name='address'
+                    value={address}
+                    onChange={({ target }) => setAddress(target?.value)}
+                  />
+                  <label htmlFor='zipCode'>Postnr</label>
+                  <input
+                    type='text'
+                    id='zipCode'
+                    name='zipCode'
+                    value={zipCode}
+                    onChange={({ target }) => setZipCode(target?.value)}
+                  />
                 </div>
                 <div className={styles.column}>
                   <label htmlFor='to'>Till</label>
@@ -109,28 +125,34 @@ export default function Form({ setFormData }: FormProps) {
                   />
                 </div>
               </div>
-              <div className={styles.column}>
-                <div className={styles.column}>
-                  <label htmlFor='date'>Datum</label>
-                  <input
-                    type='text'
-                    id='date'
-                    name='date'
-                    value={date}
-                    onChange={({ target }) => setDate(target?.value)}
-                  />
-                </div>
-                <div className={styles.column}>
-                  <label htmlFor='invoiceNumber'>Fakturanr</label>
-                  <input
-                    type='text'
-                    id='invoiceNumber'
-                    name='invoiceNumber'
-                    value={invoiceNumber}
-                    onChange={({ target }) => setInvoiceNumber(target?.value)}
-                  />
-                </div>
-              </div>
+            </div>
+          </div>
+          <div className={styles.formCard}>
+            <div className={styles.column}>
+              <label htmlFor='date'>Datum</label>
+              <input
+                type='text'
+                id='date'
+                name='date'
+                value={date}
+                onChange={({ target }) => setDate(target?.value)}
+              />
+              <label htmlFor='dueDate'>Förfallodatum</label>
+              <input
+                type='text'
+                id='dueDate'
+                name='dueDate'
+                value={dueDate}
+                onChange={({ target }) => setDueDate(target?.value)}
+              />
+              <label htmlFor='invoiceNumber'>Fakturanr</label>
+              <input
+                type='text'
+                id='invoiceNumber'
+                name='invoiceNumber'
+                value={invoiceNumber}
+                onChange={({ target }) => setInvoiceNumber(target?.value)}
+              />
             </div>
           </div>
           <div className={styles.formCard}>
@@ -152,8 +174,6 @@ export default function Form({ setFormData }: FormProps) {
                   value={yourRef}
                   onChange={({ target }) => setYourRef(target?.value)}
                 />
-              </div>
-              <div className={styles.column}>
                 <label htmlFor='company'>Företag</label>
                 <input
                   type='text'
@@ -162,37 +182,7 @@ export default function Form({ setFormData }: FormProps) {
                   value={company}
                   onChange={({ target }) => setCompany(target?.value)}
                 />
-                <label htmlFor='address'>Adress</label>
-                <input
-                  type='text'
-                  id='address'
-                  name='address'
-                  value={address}
-                  onChange={({ target }) => setAddress(target?.value)}
-                />
               </div>
-            </div>
-            <div className={styles.column}>
-              <label htmlFor='zipCode'>Postnr</label>
-              <input
-                type='text'
-                id='zipCode'
-                name='zipCode'
-                value={zipCode}
-                onChange={({ target }) => setZipCode(target?.value)}
-              />
-            </div>
-          </div>
-          <div className={styles.formCard}>
-            <div className={styles.column}>
-              <label htmlFor='dueDate'>Förfallodatum</label>
-              <input
-                type='text'
-                id='dueDate'
-                name='dueDate'
-                value={dueDate}
-                onChange={({ target }) => setDueDate(target?.value)}
-              />
             </div>
           </div>
 
